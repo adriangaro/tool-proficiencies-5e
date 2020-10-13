@@ -1,0 +1,26 @@
+{
+  "name": "tool-proficiencies-5e",
+  "title": "Tool Proficiencies for D&D5e",
+  "description": "Gives the ability to roll tool skill rolls.",
+  "version": "1.0.0",
+  "author": "RoAdd",
+  "systems": [
+    "dnd5e"
+  ],
+  "esmodules": [
+    "tool-proficiencies.js",
+    "utils.js"
+  ],
+  "styles": [
+    "tool-proficiencies.css"
+  ],
+  "minimumCoreVersion": "0.6.0",
+  "compatibleCoreVersion": "0.7.3",
+  "languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+    }
+  ]
+}

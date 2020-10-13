@@ -1,0 +1,9 @@
+{
+    "tool-proficiencies-5e.Tools": "Tools",
+    "tool-proficiencies-5e.Ability": "Ability",
+    "tool-proficiencies-5e.Bonus": "Bonus",
+    "tool-proficiencies-5e.Expertise": "Expertise",
+    "tool-proficiencies-5e.Modifier": "Modifier",
+    "tool-proficiencies-5e.tool-compendium.name": "Tool Compendium",
+    "tool-proficiencies-5e.tool-compendium.hint": "Select which compendium will be used to search for tool icons."
+}
