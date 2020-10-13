@@ -1,4 +1,4 @@
-import { d20Roll } from "../../systems/dnd5e/module/dice.js";
+import { d20Roll } from "../../../systems/dnd5e/module/dice.js";
 import { getToolProficiencies } from "./utils.js";
 
 const MODULE_NAME = "tool-proficiencies-5e";
@@ -215,7 +215,7 @@ async function injectActorSheet(app, html, data) {
   }
 
   let template = await renderTemplate(
-    `modules/${MODULE_NAME}/tool-proficiencies.hbs`,
+    `modules/${MODULE_NAME}/templates/tool-proficiencies.hbs`,
     {
       DND5E: CONFIG.DND5E,
       toolProficiencies,

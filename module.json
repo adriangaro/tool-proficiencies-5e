@@ -8,11 +8,11 @@
     "dnd5e"
   ],
   "esmodules": [
-    "tool-proficiencies.js",
-    "utils.js"
+    "./scripts/tool-proficiencies.js",
+    "./scripts/utils.js"
   ],
   "styles": [
-    "tool-proficiencies.css"
+    "./styles/tool-proficiencies.css"
   ],
   "minimumCoreVersion": "0.6.0",
   "compatibleCoreVersion": "0.7.3",
