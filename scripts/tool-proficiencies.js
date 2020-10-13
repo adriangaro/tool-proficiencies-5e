@@ -30,6 +30,7 @@ Hooks.once("ready", () => {
     config: true,
     type: String,
     isSelect: true,
+    default: "dnd5e.items",
     choices: itemCompendiums,
   });
 });
@@ -133,7 +134,7 @@ function addActor5eRollTool() {
         ? await openQueryDialog()
         : toolData.ability;
     const abilities = this.data.data.abilities;
-    const mod = ability == ("-" ? 0 : abilities[ability].mod) || 0;
+    const mod = (ability == "-" ? 0 : abilities[ability].mod) || 0;
     const prof = this.data.data.attributes.prof || 0;
     const jota = this.getFlag("dnd5e", "jackOfAllTrades") || false;
 
