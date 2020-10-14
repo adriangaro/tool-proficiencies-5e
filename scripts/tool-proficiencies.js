@@ -132,6 +132,7 @@ function addActor5eRollTool() {
     options = {}
   ) {
     const toolData = this.getFlag(MODULE_NAME, tool);
+    let bonus = toolData ? parseInt(Number(toolData.bonus)) : 0;
 
     const ability =
       !toolData || toolData.ability == "-"
@@ -166,6 +167,11 @@ function addActor5eRollTool() {
     if (bonuses.skill) {
       data["skillBonus"] = bonuses.skill;
       parts.push("@skillBonus");
+    }
+
+    if (bonus) {
+      data["toolBonus"] = bonus;
+      parts.push("@toolBonus");
     }
 
     // Add provided extra roll parts now because they will get clobbered by mergeObject below
