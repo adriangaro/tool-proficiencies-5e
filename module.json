@@ -2,7 +2,7 @@
   "name": "tool-proficiencies-5e",
   "title": "Tool Proficiencies for DnD5e",
   "description": "Gives the ability to roll tool skill rolls.",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "RoAdd",
   "systems": [
     "dnd5e"
