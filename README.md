@@ -8,7 +8,7 @@ For macros and other modules, the Actor class has a new function which is 'rollT
 
 # Versions
 
-- **1.0** 
+- **0.1.0** 
   - Implemented tab injection into character actor sheets.
   - In this tab you will see all tools you have proficiencies, even cusotm added ones in the tool proficiencies section (the input marked with `Special`).
   - An exception to this are `Artisan's Tools`, `Gaming Set` and `Vehicles (Land and Water)` as encompass a group of tools instead of the tool themselves. If a tool can't be marked as proeficient using the checkbox, add them into the input box labeled Special in the proficiency modal.
