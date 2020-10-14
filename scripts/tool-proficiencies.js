@@ -1,4 +1,6 @@
-import { d20Roll } from "../../../systems/dnd5e/module/dice.js";
+import { d20Roll } from "/systems/dnd5e/module/dice.js";
+import ActorSheet5eCharacter from '/systems/dnd5e/module/actor/sheets/character.js';
+
 import { getToolProficiencies } from "./utils.js";
 
 const MODULE_NAME = "tool-proficiencies-5e";
@@ -12,6 +14,7 @@ Hooks.once("init", () => { });
 Hooks.once("setup", () => {
   patchActor5ePrepareData();
   addActor5eRollTool();
+  patchActorSheet5eCharacterRenderInner();
 });
 
 Hooks.once("ready", () => {
@@ -35,7 +38,7 @@ Hooks.once("ready", () => {
   });
 });
 
-Hooks.on("renderActorSheet", injectActorSheet);
+// Hooks.on("renderActorSheet5eCharacter", injectActorSheet);
 
 Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
   return arg1 == arg2 ? options.fn(this) : options.inverse(this);
@@ -122,6 +125,7 @@ async function openQueryDialog() {
   });
 }
 
+
 function addActor5eRollTool() {
   CONFIG.Actor.entityClass.prototype.rollTool = async function (
     tool,
@@ -186,21 +190,33 @@ function addActor5eRollTool() {
   };
 }
 
-let activate = false;
+async function patchActorSheet5eCharacterRenderInner() {
+  console.log("Patching ActorSheet5eCharacter.prototype._renderInner");
+  const old_renderInner = ActorSheet5eCharacter.prototype._renderInner;
+  ActorSheet5eCharacter.prototype._renderInner = async function(data, options) {
+    const html = await old_renderInner.call(this, data, options);
+    try {
+      await injectActorSheet(this.object, html);
+    } catch (e) {}
+    return html;
+  }
+}
 
-async function injectActorSheet(app, html, data) {
-  console.log(html);
+
+async function injectActorSheet(actor, html) {
   const tabSelector = html.find(`nav.sheet-navigation.tabs`);
   const toolTabString = `<a class="item" data-group="primary" data-tab="toolsProficiencies">${i18n(
     "Tools"
   )}</a>`;
   tabSelector.append($(toolTabString));
 
-  const sheetContainer = html.find(`.sheet-body`),
-    existingTab = html.find(`.tab[data-tab="toolsProficiencies"]`);
-  console.log(existingTab);
-  const toolProficiencies = getToolProficiencies(app.actor).map((tool) =>
-    app.actor.getFlag(MODULE_NAME, tool)
+  const sheetContainer = html.find(`.sheet-body`);
+  const tabContainer = $(`<div class="tab" data-group="primary" data-tab="toolsProficiencies"></div>`);
+  sheetContainer.append(tabContainer);
+  
+
+  const toolProficiencies = getToolProficiencies(actor).map((tool) =>
+    actor.getFlag(MODULE_NAME, tool)
   );
   const compendium = await game.packs.find(
     (pack) =>
@@ -220,43 +236,17 @@ async function injectActorSheet(app, html, data) {
     {
       DND5E: CONFIG.DND5E,
       toolProficiencies,
+      MODULE_NAME: MODULE_NAME
     }
   );
-  sheetContainer.append(template);
-
-  if (activate) {
-    app._tabs[0].activate("toolsProficiencies");
-    activate = false;
-  }
+  tabContainer.append(template);
 
   toolProficiencies.forEach((tool) => {
     const row = html.find(
       `[data-tab="toolsProficiencies"] [data-item-id="${tool.label}"]`
     );
-    row.find(".item-tool-expertise > input").change((event) => {
-      app.actor.update({
-        [`flags.${MODULE_NAME}.${tool.label}.expertise`]: event.target.checked,
-      });
-    });
-    row.find(".item-tool-ability > select").change((event) => {
-      app.actor.update({
-        [`flags.${MODULE_NAME}.${tool.label}.ability`]: event.target.value,
-      });
-    });
-    row.find(".item-tool-bonus > input").change((event) => {
-      app.actor.update({
-        [`flags.${MODULE_NAME}.${tool.label}.bonus`]: parseInt(
-          Number(event.target.value)
-        ),
-      });
-    });
     row.find(".item-name").click((event) => {
-      app.actor.rollTool(tool.label);
+      actor.rollTool(tool.label);
     });
   });
-
-  const newSection = sheetContainer.find(`.tab[data-tab="toolsProficiencies"]`);
-  newSection.find("input[type=text]").change((evt) => activate = true);
-  newSection.find("input[type=checkbox]").change((evt) => activate = true);
-  newSection.find("select").change((evt) => activate = true);
 }

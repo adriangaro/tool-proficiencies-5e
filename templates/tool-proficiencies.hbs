@@ -1,49 +1,48 @@
-<div class="tab" data-group="primary" data-tab="toolsProficiencies">
-    <ol class="inventory-list">
-        <li class="inventory-header flexrow">
-            <h3 class="item-name flexrow">{{ localize "tool-proficiencies-5e.Tools"}}</h3>
-            <div class="item-detail item-tool-expertise">{{ localize "tool-proficiencies-5e.Expertise"}}</div>
-            <div class="item-detail item-tool-ability">{{ localize "tool-proficiencies-5e.Ability"}}</div>
-            <div class="item-detail item-tool-bonus">{{ localize "tool-proficiencies-5e.Bonus"}}</div>
-            <div class="item-detail item-tool-modifier">{{ localize "tool-proficiencies-5e.Modifier"}}</div>
+
+<ol class="inventory-list">
+    <li class="inventory-header flexrow">
+        <h3 class="item-name flexrow">{{ localize "tool-proficiencies-5e.Tools"}}</h3>
+        <div class="item-detail item-tool-expertise">{{ localize "tool-proficiencies-5e.Expertise"}}</div>
+        <div class="item-detail item-tool-ability">{{ localize "tool-proficiencies-5e.Ability"}}</div>
+        <div class="item-detail item-tool-bonus">{{ localize "tool-proficiencies-5e.Bonus"}}</div>
+        <div class="item-detail item-tool-modifier">{{ localize "tool-proficiencies-5e.Modifier"}}</div>
+    </li>
+    <ol class="item-list">
+        {{#each toolProficiencies as |toolData|}}
+        <li class="tool flexrow tool-data" data-item-id="{{toolData.label}}">
+            <div class="item-name flexrow rollable">
+                <div class="item-image" style="background-image: url({{toolData.img}})"></div>
+                <h4>
+                    {{toolData.label~}}
+                </h4>
+            </div>
+
+            <div class="item-detail item-tool-expertise">
+                <input type="checkbox" name="flags.{{../MODULE_NAME}}.{{toolData.label}}.expertise" {{checked toolData.expertise}} data-dtype="Boolean">
+            </div>
+
+            <div class="item-detail item-tool-ability">
+                <select data-dtype="String" name="flags.{{../MODULE_NAME}}.{{toolData.label}}.ability">
+                    {{#select toolData.ability}}
+                        <option value="-">---</option>
+                        <option value="str">Str</option>
+                        <option value="dex">Dex</option>
+                        <option value="con">Con</option>
+                        <option value="int">Int</option>
+                        <option value="wis">Wis</option>
+                        <option value="cha">Cha</option>
+                    {{/select}}
+                </select>
+            </div>
+
+            <div class="item-detail item-tool-bonus">
+                <input type="number" name="flags.{{../MODULE_NAME}}.{{toolData.label}}.bonus" value="{{toolData.bonus}}" data-dtype="Number">
+            </div>
+
+            <div class="item-detail item-tool-modifier">
+                {{toolData.modifier}}
+            </div>
         </li>
-        <ol class="item-list">
-            {{#each toolProficiencies as |toolData|}}
-            <li class="item flexrow tool-data" data-item-id="{{toolData.label}}">
-                <div class="item-name flexrow rollable">
-                    <div class="item-image" style="background-image: url({{toolData.img}})"></div>
-                    <h4>
-                        {{toolData.label~}}
-                    </h4>
-                </div>
-
-                <div class="item-detail item-tool-expertise">
-                    <input type="checkbox" {{#if toolData.expertise}}checked{{/if}} data-dtype="Boolean"
-                        data-property="expertise">
-                </div>
-
-                <div class="item-detail item-tool-ability">
-                    <select data-dtype="String" data-property="ability">
-                        <option value="-" {{#if (eq toolData.ability '-')}}selected{{/if}}>---</option>
-                        <option value="str" {{#if (eq toolData.ability 'str')}}selected{{/if}}>Str</option>
-                        <option value="dex" {{#if (eq toolData.ability 'dex')}}selected{{/if}}>Dex</option>
-                        <option value="con" {{#if (eq toolData.ability 'con')}}selected{{/if}}>Con</option>
-                        <option value="int" {{#if (eq toolData.ability 'int')}}selected{{/if}}>Int</option>
-                        <option value="wis" {{#if (eq toolData.ability 'wis')}}selected{{/if}}>Wis</option>
-                        <option value="cha" {{#if (eq toolData.ability 'cha')}}selected{{/if}}>Cha</option>
-                    </select>
-                </div>
-
-                <div class="item-detail item-tool-bonus">
-                    <input type="text" value="{{toolData.bonus}}" data-dtype="String" data-property="bonus">
-                </div>
-
-                <div class="item-detail item-tool-modifier">
-                    {{toolData.modifier}}
-                </div>
-            </li>
-            {{/each}}
-        </ol>
+        {{/each}}
     </ol>
-
-</div>
+</ol>
