@@ -1,0 +1,34 @@
+<ol class="items-list inventory-list fav-item">
+    <li class="items-header flexrow">
+        <h3>{{localize "tool-proficiencies-5e.Tools"}}</h3>
+    </li>
+    <ol class="item-list">
+    {{#each toolProficiencies as |toolData|}}
+        <li class="item flexrow fav-item" data-item-id="{{toolData.label}}">
+        <div class="item-name flexrow rollable">        
+            <div class="item-image" style="background-image: url({{toolData.img}})">
+                <i class="fa fa-dice-d20"></i>
+            </div>
+            <h4 title="{{toolData.label}}">
+                
+                {{#if (eq toolData.prof 2)}}<i title="{{localize "tool-proficiencies-5e.Expertise" }}" class="fas fa-check-double"></i>{{/if}}
+                {{#if (eq toolData.prof 1)}}<i title="{{localize "tool-proficiencies-5e.Proficiency" }}" class="fas fa-check"></i>{{/if}}
+                {{#if (eq toolData.prof 0.5)}}<i title="{{localize "tool-proficiencies-5e.Jota" }}" class="fas fa-adjust"></i>{{/if}}
+                {{#if (eq toolData.prof 0)}}<i title="{{localize "tool-proficiencies-5e.None" }}" class="fas fa-circle"></i>{{/if}}
+                {{toolData.label}}
+            </h4>
+        </div>
+
+         <div class="item-detail item-modifier">
+            <span>{{ numberFormat toolData.modifier decimals=0 sign=true}}</span>
+        </div>
+
+        <div class="item-detail item-controls">
+            <a class="item-control item-fav" title="{{localize "TIDY5E.RemoveFav"}}">
+            <i class="fas fa-bookmark"></i>
+            </a>
+        </div>
+        </li>
+    {{/each}}
+    </ol>
+</ol>

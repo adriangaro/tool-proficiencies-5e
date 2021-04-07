@@ -2,8 +2,20 @@
     "tool-proficiencies-5e.Tools": "Tools",
     "tool-proficiencies-5e.Ability": "Ability",
     "tool-proficiencies-5e.Bonus": "Bonus",
-    "tool-proficiencies-5e.Expertise": "Expertise",
-    "tool-proficiencies-5e.Modifier": "Modifier",
+    "tool-proficiencies-5e.Modifier": "Mod",
+    "tool-proficiencies-5e.Proficiency": "Proficiency",
     "tool-proficiencies-5e.tool-compendium.name": "Tool Compendium",
-    "tool-proficiencies-5e.tool-compendium.hint": "Select which compendium will be used to search for tool icons."
+    "tool-proficiencies-5e.tool-compendium.hint": "Select which compendium will be used to search for tool icons.",
+    "tool-proficiencies-5e.Default": "Default",
+    "tool-proficiencies-5e.NoAbility": "No Ability",
+    "tool-proficiencies-5e.ModuleName": "Tool Proficiencies for DnD5e",
+    "tool-proficiencies-5e.ToolName": "Tool Name",
+    "tool-proficiencies-5e.ToolKey": "Key",
+    "tool-proficiencies-5e.ToolType": "Type",
+    "tool-proficiencies-5e.NoType": "No Type Selected",
+    "tool-proficiencies-5e.types.other": "Generic Tools",
+    "tool-proficiencies-5e.types.artisan": "Artisan Tools",
+    "tool-proficiencies-5e.types.instrument": "Musical Instrument",
+    "tool-proficiencies-5e.types.gaming": "Gaming Set",
+    "tool-proficiencies-5e.types.vehicle": "Vehicles"
 }

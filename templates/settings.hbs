@@ -1,0 +1,71 @@
+<form onsubmit="event.preventDefault();" class="{{classes}}" autocomplete="off">
+  <section>
+    <h2>Tools</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>{{localize 'tool-proficiencies-5e.ToolName'}}</td>
+                <td>{{localize 'tool-proficiencies-5e.ToolKey'}}</td>
+                <td>{{localize 'tool-proficiencies-5e.ToolType'}}</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each object.tools as |tool|}}
+                <tr>
+                    <td>
+                        <input type="text" name="tools.{{@index}}.name" value="{{tool.name}}">
+                    </td>
+                    <td>
+                        <input type="text" name="tools.{{@index}}.key" value="{{tool.key}}">
+                    </td>
+                    <td>
+                        <select data-dtype="String" name="tools.{{@index}}.type">
+                            {{#select tool.type}}
+                            {{#each ../types as |label|}}
+                                <option value="{{@key}}">{{ localize label}}</option>
+                            {{/each}}
+                            {{/select}}
+                        </select>
+                    </td>
+                    <td>
+                        <i class="toggle fas fa-sort-{{#if (not tool.open)}}down{{else}}up{{/if}}" data-index={{@index}} data-open={{tool.open}}></i>
+                        <i class="delete fas fa-trash" data-index={{@index}}></i>
+                    </td>
+                </tr>
+                {{#if tool.open}}
+                <tr>
+                    <td colspan="4">
+                        <div class="tool-description-editor">
+                            {{editor content=tool.description target=(concat "tools." @index ".description") editable=true}}
+                        </div>
+                    </td>
+                </tr>
+                {{/if}}
+                {{#if (not tool.open)}}
+                    <input type="hidden" name="tools.{{@index}}.description" value="{{tool.description}}"/>
+                {{/if}}
+                <input type="hidden" data-dtype="Boolean" name="tools.{{@index}}.default" value="{{tool.default}}"/>
+            {{/each}}
+            <tr>
+                <td colspan="3"></td>
+                <td><i id="add-tool" class="far fa-plus-square"></i></td>
+            </tr>
+        </tbody>
+    </table>
+  </section>
+  <footer class="sheet-footer flexrow">
+    <button name="reset">
+      <i class="fas fa-undo"></i>Reset
+    </button>
+    <button name="import">
+      <i class="fas fa-sort-down"></i>Import Tools
+    </button>
+    <button name="export">
+      <i class="fas fa-sort-up"></i>Export Tools
+    </button>
+    <button type="submit" name="submit">
+      <i class="fas fa-save"></i>Save
+    </button>
+  </footer>
+</form>

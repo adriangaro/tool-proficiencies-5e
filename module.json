@@ -2,20 +2,29 @@
   "name": "tool-proficiencies-5e",
   "title": "Tool Proficiencies for DnD5e",
   "description": "Gives the ability to roll tool skill rolls.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "MrRoAdd",
   "systems": [
     "dnd5e"
   ],
   "esmodules": [
-    "./scripts/tool-proficiencies.js",
-    "./scripts/utils.js"
+    "./scripts/init.js",
+    "./scripts/patches/actor.js",
+    "./scripts/patches/actorSheet.js",
+    "./scripts/patches/item.js",
+    "./scripts/patches/tokenActionHud/ToolProficiencyActionListExtender.js",
+    "./scripts/patches/tokenActionHud/ToolProficiencyPreRollHandler.js",
+    "./scripts/utils.js",
+    "./scripts/favourite.js",
+    "./scripts/data.js",
+    "./scripts/settings.js",
+    "./scripts/libWrapperShim.js"
   ],
   "styles": [
-    "./styles/tool-proficiencies.css"
-  ],
-  "minimumCoreVersion": "0.6.0",
-  "compatibleCoreVersion": "0.7.3",
+		"./styles/tools.css"
+	],
+  "minimumCoreVersion": "0.7.0",
+  "compatibleCoreVersion": "0.7.9",
   "languages": [
 		{
 			"lang": "en",
@@ -23,6 +32,6 @@
 			"path": "lang/en.json"
     }
   ],
-  "manifest": "https://raw.githubusercontent.com/adriangaro/tool-proficiencies-5e/0.1.1/module.json",
-  "download": "https://github.com/adriangaro/tool-proficiencies-5e/archive/0.1.1.zip"
+  "manifest": "https://raw.githubusercontent.com/adriangaro/tool-proficiencies-5e/0.2.0/module.json",
+  "download": "https://github.com/adriangaro/tool-proficiencies-5e/archive/0.2.0.zip"
 }

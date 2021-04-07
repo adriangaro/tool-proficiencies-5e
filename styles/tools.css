@@ -1,0 +1,89 @@
+.tidy5eDark .tidy5e.sheet.actor [data-tab="toolsProficiencies"] .items-list .item-detail select,
+.tidy5eDark .tidy5e.sheet.actor .items-list .item-detail input {
+    color: var(--darkmode-primary-color);
+}
+
+[data-tab="toolsProficiencies"] .items-list .item-detail select,
+[data-tab="toolsProficiencies"] .items-list .item-detail input {
+    border: none;
+	color: rgba(0,0,0,.6);
+}
+
+.tidy5eDark .tidy5e.sheet.actor [data-tab="toolsProficiencies"] .items-list .item-detail select option {
+    color: black;
+}
+
+.dnd5e.sheet.actor [data-tab="toolsProficiencies"] .item-detail.item-tool-proficiency {
+    flex-basis: 150px;
+}
+
+.dnd5e.sheet.actor [data-tab="toolsProficiencies"] .item-detail.item-tool-proficiency select {
+    text-align: center;
+    width: 140px;
+}
+
+.dnd5e.sheet.actor [data-tab="toolsProficiencies"] .item-detail.item-tool-bonus {
+    flex-basis: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.dnd5e.sheet.actor [data-tab="toolsProficiencies"] .item-detail.item-tool-bonus input {
+    text-align: center;
+    width: 20px;
+    height: auto;
+}
+
+.dnd5e.sheet.actor [data-tab="toolsProficiencies"] .item-detail.item-tool-modifier {
+    flex-basis: 50px;
+}
+
+.tidy5e.sheet.actor [data-tab="toolsProficiencies"] .item-tool-proficiency {
+    width: 150px;
+    flex: 0 0 150px;
+}
+
+.tidy5e.sheet.actor [data-tab="toolsProficiencies"] .item-tool-proficiency select {
+    text-align: center;
+    width: 140px;
+}
+
+.tidy5e.sheet.actor [data-tab="toolsProficiencies"] .item-tool-ability {
+    width: 150px;
+    flex: 0 0 150px;
+}
+
+.tidy5e.sheet.actor [data-tab="toolsProficiencies"] .item-tool-ability select {
+    text-align: center;
+    width: 140px;
+}
+
+.tidy5e.sheet.actor [data-tab="toolsProficiencies"] .item-tool-bonus {
+    width: 50px;
+    flex: 0 0 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.tidy5e.sheet.actor [data-tab="toolsProficiencies"] .item-tool-bonus input {
+    text-align: center;
+    width: 20px;
+    height: auto;
+}
+
+.tidy5e.sheet.actor [data-tab="toolsProficiencies"] .item-tool-modifier {
+    width: 50px;
+    flex: 0 0 50px;
+}
+
+.tool-proficiencies-5e .tool-description-editor {
+    height: 350px;
+}
+
+.tool-proficiencies-5e .tool-description-editor .editor {
+    height: 100%;
+}
+
+.tool-proficiencies-5e .tool-description-editor .editor .tox.tox-tinymce {
+    height: 100% !important;
+}
