@@ -113,7 +113,7 @@ export async function updateToolProficiencies(allToolData) {
 
 export function migrateActorProficiencies(actor) {
   // Early bailout
-  if (!CONFIG.DND5E.toolProficienciesData) return actor;
+  if (!CONFIG.DND5E.toolProficienciesData || actor.compendium) return actor;
 
   let tools = actor.data.flags[MODULE_NAME];
   let migrated = false;

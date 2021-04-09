@@ -20,6 +20,9 @@ The available tool proficiencies can be fully customized in the module settings,
 
 # Versions
 
+- **0.2.1**
+  - Fixed migrating compendium actors causing an infinite loop.
+
 - **0.2.0**
   - Reworked tool proficiencies and how they work, extended default tool proficiencies to include all tools described in the SRD. `CONFIG.DND5E.toolProficiencies` is overwritten to add the new proficiencies.
   - Added `CONFIG.DND5E.toolProficienciesData` to add extra information about the tool proficiencies and description, and tools can be of a specific type, types found in `CONFIG.DND5E.toolTypes`.
